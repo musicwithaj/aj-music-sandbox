@@ -29,7 +29,7 @@
 			</ul>
 
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-				<li ngbDropdown class="nav-item dropdown ms-auto">
+				<li ngbDropdown #profileDropdown="ngbDropdown" [autoClose]="'outside'" class="nav-item dropdown ms-auto profile-dropdown">
 					<a class="nav-link dropdown-toggle d-flex align-items-center" 
 						ngbDropdownToggle
 						id="userDropdown">
@@ -41,10 +41,19 @@
 						{{ userName || 'User' }}
 					</a>
 					<ul ngbDropdownMenu class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-						<li><a ngbDropdownItem class="dropdown-item" href="#">My Profile</a></li>
-						<li><a ngbDropdownItem class="dropdown-item" href="#">Settings</a></li>
+						<li><a ngbDropdownItem class="dropdown-item" (click)="profileDropdown.close()">My Profile</a></li>
+						<li>
+							<a ngbDropdownItem>
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="" id="checkDefault">
+									<label class="form-check-label" for="checkDefault">
+										Dark Mode
+									</label>
+								</div>
+							</a>
+						</li>
 						<li><hr class="dropdown-divider"></li>
-						<li><a ngbDropdownItem class="dropdown-item" href="#">Logout</a></li>
+						<li><a ngbDropdownItem class="dropdown-item" (click)="profileDropdown.close()">Logout</a></li>
 					</ul>
 				</li>
 			</ul>
