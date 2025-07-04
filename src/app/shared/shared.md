@@ -1,0 +1,1 @@
+Shared standalone components, pipes, directives, utilities
