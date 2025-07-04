@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
+import { ThemeService } from '../../core/theme.service';
 
 @Component({
 	selector: 'nav-bar',
@@ -9,5 +10,6 @@ import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class NavBar {
+	themeService = inject(ThemeService);
 	@Input() userName: string = "AJ John";
 }

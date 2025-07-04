@@ -44,8 +44,8 @@
 						<li><a ngbDropdownItem class="dropdown-item" (click)="profileDropdown.close()">My Profile</a></li>
 						<li>
 							<a ngbDropdownItem>
-								<div class="form-check">
-									<input class="form-check-input" type="checkbox" value="" id="checkDefault">
+								<div class="form-check" (click)="themeService.toggleTheme()">
+									<input class="form-check-input" type="checkbox" value="" id="checkDefault" [checked]="themeService.getDarkMode()">
 									<label class="form-check-label" for="checkDefault">
 										Dark Mode
 									</label>
