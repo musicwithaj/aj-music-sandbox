@@ -69,6 +69,23 @@ export class WaveSurferSandbox implements OnInit, AfterViewInit {
 			track.track.setVolume(volume);
 		}
 	}
+
+	muteTrack(index: number) {
+		const track = this.tracks[index];
+		if (track.muted) {
+			track.muted = false;
+			track.track.setVolume(track.volume);
+			return;
+		} else {
+			track.muted = true;
+			track.track.setVolume(0);
+		}
+	}
+
+	isMuted(index: number): boolean {
+		const track = this.tracks[index];
+		return track.muted;
+	}
 }
 
 export class TrackConfig {
@@ -77,6 +94,7 @@ export class TrackConfig {
 	color: string;
 	index: number;
 	url: string;
+	muted: boolean;
 
 	constructor(url: string, color: string, index: number) {
 		this.url = url;
