@@ -10,12 +10,23 @@ import { Synth } from 'tone';
 
 export class ToneJsSandbox {
 	private synth: Synth = new Synth().toDestination();
+	octave: number = 4;
 
 	playNote(note: string) {
 		if (!note) { 
 			note = 'C4';
 		}
 		this.synth.triggerAttack(note);
+	}
+
+	shiftOctave(direction: number) {
+		this.octave += direction;
+		if (this.octave < 0) {
+			this.octave = 0; // Prevent negative octave
+		}
+		if (this.octave > 8) {
+			this.octave = 8; // Limit to a maximum octave
+		}
 	}
 
 	endNote() {

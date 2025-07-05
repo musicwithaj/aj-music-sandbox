@@ -7,20 +7,28 @@
 	<div class="row align-items-start">
 		<div class="col">
 			<div class="btn-group" role="group" aria-label="Basic example">
+				<button type="button" class="btn btn-outline-primary" (click)="shiftOctave(-1)">-</button>
+				<button type="button" class="btn btn-outline-primary" (click)="shiftOctave(1)">+</button>
+			</div>
+		</div>
+	</div>
+	<div class="row align-items-start">
+		<div class="col">
+			<div class="btn-group" role="group" aria-label="Basic example">
 				<button type="button" class="btn btn-outline-primary"
-					(mousedown)="playNote('C#4')" (mouseup)="endNote()" (mouseleave)="endNote()">C#4
+					(mousedown)="playNote('C#'+octave)" (mouseup)="endNote()" (mouseleave)="endNote()">C#{{octave}}
 				</button>
 				<button type="button" class="btn btn-outline-primary"
-					(mousedown)="playNote('D#4')" (mouseup)="endNote()" (mouseleave)="endNote()">D#4
+					(mousedown)="playNote('D#'+octave)" (mouseup)="endNote()" (mouseleave)="endNote()">D#{{octave}}
 				</button>
 				<button type="button" class="btn btn-outline-primary"
-					(mousedown)="playNote('F#4')" (mouseup)="endNote()" (mouseleave)="endNote()">F#4
+					(mousedown)="playNote('F#'+octave)" (mouseup)="endNote()" (mouseleave)="endNote()">F#{{octave}}
 				</button>
 				<button type="button" class="btn btn-outline-primary"
-					(mousedown)="playNote('G#4')" (mouseup)="endNote()" (mouseleave)="endNote()">G#4
+					(mousedown)="playNote('G#'+octave)" (mouseup)="endNote()" (mouseleave)="endNote()">G#{{octave}}
 				</button>
 				<button type="button" class="btn btn-outline-primary"
-					(mousedown)="playNote('A#4')" (mouseup)="endNote()" (mouseleave)="endNote()">A#4
+					(mousedown)="playNote('A#'+octave)" (mouseup)="endNote()" (mouseleave)="endNote()">A#{{octave}}
 				</button>
 			</div>
 		</div>
@@ -29,25 +37,25 @@
 		<div class="col">
 			<div class="btn-group" role="group" aria-label="Basic example">
 				<button type="button" class="btn btn-outline-primary"
-					(mousedown)="playNote('C4')" (mouseup)="endNote()" (mouseleave)="endNote()">C4
+					(mousedown)="playNote('C'+octave)" (mouseup)="endNote()" (mouseleave)="endNote()">C{{octave}}
 				</button>
 				<button type="button" class="btn btn-outline-primary"
-					(mousedown)="playNote('D4')" (mouseup)="endNote()" (mouseleave)="endNote()">D4
+					(mousedown)="playNote('D'+octave)" (mouseup)="endNote()" (mouseleave)="endNote()">D{{octave}}
 				</button>
 				<button type="button" class="btn btn-outline-primary"
-					(mousedown)="playNote('E4')" (mouseup)="endNote()" (mouseleave)="endNote()">E4
+					(mousedown)="playNote('E'+octave)" (mouseup)="endNote()" (mouseleave)="endNote()">E{{octave}}
 				</button>
 				<button type="button" class="btn btn-outline-primary"
-					(mousedown)="playNote('F4')" (mouseup)="endNote()" (mouseleave)="endNote()">F4
+					(mousedown)="playNote('F'+octave)" (mouseup)="endNote()" (mouseleave)="endNote()">F{{octave}}
 				</button>
 				<button type="button" class="btn btn-outline-primary"
-					(mousedown)="playNote('G4')" (mouseup)="endNote()" (mouseleave)="endNote()">G4
+					(mousedown)="playNote('G'+octave)" (mouseup)="endNote()" (mouseleave)="endNote()">G{{octave}}
 				</button>
 				<button type="button" class="btn btn-outline-primary"
-					(mousedown)="playNote('A4')" (mouseup)="endNote()" (mouseleave)="endNote()">A4
+					(mousedown)="playNote('A'+octave)" (mouseup)="endNote()" (mouseleave)="endNote()">A{{octave}}
 				</button>
 				<button type="button" class="btn btn-outline-primary"
-					(mousedown)="playNote('B4')" (mouseup)="endNote()" (mouseleave)="endNote()">B4
+					(mousedown)="playNote('B'+octave)" (mouseup)="endNote()" (mouseleave)="endNote()">B{{octave}}
 				</button>
 			</div>
 		</div>
