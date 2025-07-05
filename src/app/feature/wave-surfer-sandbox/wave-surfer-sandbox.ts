@@ -41,4 +41,23 @@ export class WaveSurferSandbox implements AfterViewInit {
 			this.track2.destroy();
 		}
 	}
+
+	playtrack() {
+		if (this.track1) {
+			this.track1.play();
+		}
+	}
+
+	pauseTrack() {
+		if (this.track1) {
+			this.track1.pause();
+		}
+	}
+
+	stopTrack() {
+		if (this.track1) {
+			this.track1.pause();
+			this.track1.seekTo(0);
+		}
+	}
 }
