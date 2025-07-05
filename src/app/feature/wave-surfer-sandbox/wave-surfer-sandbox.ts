@@ -17,13 +17,13 @@ export class WaveSurferSandbox implements AfterViewInit {
 			container: '#waveform1',
 			waveColor: 'violet',
 			progressColor: 'purple',
+			// Set a bar width
+			barWidth: 3,
+			// Optionally, specify the spacing between bars
+			barGap: 2,
+			// And the bar radius
+			barRadius: 4,
 		});
-
-		// this.track2 = WaveSurfer.create({
-		// 	container: '#waveform2',
-		// 	waveColor: 'orange',
-		// 	progressColor: 'red',
-		// });
 
 		this.track1.load('/audio/why_oh_why_full.mp3');
 		// this.track2.load('assets/track2.mp3');
