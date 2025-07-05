@@ -32,4 +32,13 @@ export class WaveSurferSandbox implements AfterViewInit {
 			this.track1.play();
 		})
 	}
+
+	ngOnDestroy(): void {
+		if (this.track1) {
+			this.track1.destroy();
+		}
+		if (this.track2) {
+			this.track2.destroy();
+		}
+	}
 }
