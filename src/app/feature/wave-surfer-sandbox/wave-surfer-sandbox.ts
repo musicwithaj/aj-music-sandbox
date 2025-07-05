@@ -1,16 +1,18 @@
 import { Component, AfterViewInit } from '@angular/core';
-import wavesurfer from 'wavesurfer.js';
+import { FormsModule } from '@angular/forms';
 import WaveSurfer from 'wavesurfer.js';
 
 @Component({
 	selector: 'wave-surfer-sandbox',
-	imports: [],
+	imports: [FormsModule],
 	templateUrl: './wave-surfer-sandbox.html',
 	styleUrl: './wave-surfer-sandbox.scss'
 })
 export class WaveSurferSandbox implements AfterViewInit {
 	private track1: WaveSurfer;
 	private track2: WaveSurfer;
+	isPlaying: boolean = false;
+	track1Volume: number = 1;
 
 	ngAfterViewInit(): void {
 		this.track1 = WaveSurfer.create({
@@ -42,22 +44,28 @@ export class WaveSurferSandbox implements AfterViewInit {
 		}
 	}
 
-	playtrack() {
-		if (this.track1) {
-			this.track1.play();
-		}
-	}
-
-	pauseTrack() {
-		if (this.track1) {
+	togglePlayPause() {
+		if (this.track1 && this.track1.isPlaying()) {
 			this.track1.pause();
+			this.isPlaying = false;
+		} else {
+			this.track1.play();
+			this.isPlaying = true;
 		}
 	}
 
 	stopTrack() {
 		if (this.track1) {
 			this.track1.pause();
+			this.isPlaying = false;
 			this.track1.seekTo(0);
+		}
+	}
+
+	setVolume(volume: number) {
+		if (this.track1) {
+			this.track1Volume = volume;
+			this.track1.setVolume(volume);
 		}
 	}
 }

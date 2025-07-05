@@ -7,9 +7,12 @@
 	<div class="row align-items-start">
 		<div class="col song-options">
 			<div class="btn-group" role="group" aria-label="Basic example">
-				<button type="button" class="btn btn-outline-primary" (click)="playtrack()">Play</button>
-				<button type="button" class="btn btn-outline-primary" (click)="pauseTrack()">Pause</button>
-				<button type="button" class="btn btn-outline-primary" (click)="stopTrack()">Stop</button>
+				<button type="button" class="btn btn-outline-light" (click)="togglePlayPause()">{{ isPlaying ? 'Pause' : 'Play' }}</button>
+				<button type="button" class="btn btn-outline-light" (click)="stopTrack()">Stop</button>
+			</div>
+			<div>
+				<label for="volumeRange" class="form-label">Volume</label>
+				<input type="range" class="form-range" id="volumeRange" min="0" max="1" step="0.01" [(ngModel)]="track1Volume" (input)="setVolume(track1Volume)">
 			</div>
 			<h2>Full Song</h2>
 		</div>
