@@ -36,4 +36,5 @@ export class NavBar implements OnInit {
 	// Route constants
 	toneJsRoute: string = 'tone-js';
 	waveSurferRoute: string = 'wave-surfer';
+	nexusUiRoute: string = 'nexus-ui';
 }
