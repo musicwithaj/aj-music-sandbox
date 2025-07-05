@@ -7,9 +7,48 @@
 	<div class="row align-items-start">
 		<div class="col">
 			<div class="btn-group" role="group" aria-label="Basic example">
-				<button type="button" class="btn btn-outline-primary" (click)="playNote()">C4</button>
-				<button type="button" class="btn btn-primary">Middle</button>
-				<button type="button" class="btn btn-primary">Right</button>
+				<button type="button" class="btn btn-outline-primary"
+					(mousedown)="playNote('C#4')" (mouseup)="endNote()" (mouseleave)="endNote()">C#4
+				</button>
+				<button type="button" class="btn btn-outline-primary"
+					(mousedown)="playNote('D#4')" (mouseup)="endNote()" (mouseleave)="endNote()">D#4
+				</button>
+				<button type="button" class="btn btn-outline-primary"
+					(mousedown)="playNote('F#4')" (mouseup)="endNote()" (mouseleave)="endNote()">F#4
+				</button>
+				<button type="button" class="btn btn-outline-primary"
+					(mousedown)="playNote('G#4')" (mouseup)="endNote()" (mouseleave)="endNote()">G#4
+				</button>
+				<button type="button" class="btn btn-outline-primary"
+					(mousedown)="playNote('A#4')" (mouseup)="endNote()" (mouseleave)="endNote()">A#4
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="row align-items-start">
+		<div class="col">
+			<div class="btn-group" role="group" aria-label="Basic example">
+				<button type="button" class="btn btn-outline-primary"
+					(mousedown)="playNote('C4')" (mouseup)="endNote()" (mouseleave)="endNote()">C4
+				</button>
+				<button type="button" class="btn btn-outline-primary"
+					(mousedown)="playNote('D4')" (mouseup)="endNote()" (mouseleave)="endNote()">D4
+				</button>
+				<button type="button" class="btn btn-outline-primary"
+					(mousedown)="playNote('E4')" (mouseup)="endNote()" (mouseleave)="endNote()">E4
+				</button>
+				<button type="button" class="btn btn-outline-primary"
+					(mousedown)="playNote('F4')" (mouseup)="endNote()" (mouseleave)="endNote()">F4
+				</button>
+				<button type="button" class="btn btn-outline-primary"
+					(mousedown)="playNote('G4')" (mouseup)="endNote()" (mouseleave)="endNote()">G4
+				</button>
+				<button type="button" class="btn btn-outline-primary"
+					(mousedown)="playNote('A4')" (mouseup)="endNote()" (mouseleave)="endNote()">A4
+				</button>
+				<button type="button" class="btn btn-outline-primary"
+					(mousedown)="playNote('B4')" (mouseup)="endNote()" (mouseleave)="endNote()">B4
+				</button>
 			</div>
 		</div>
 	</div>

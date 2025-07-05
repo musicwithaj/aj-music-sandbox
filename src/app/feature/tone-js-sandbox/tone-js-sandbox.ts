@@ -10,7 +10,15 @@ import { Synth } from 'tone';
 
 export class ToneJsSandbox {
 	private synth: Synth = new Synth().toDestination();
-	playNote() {
-		this.synth.triggerAttackRelease('C4', '8n');
+
+	playNote(note: string) {
+		if (!note) { 
+			note = 'C4';
+		}
+		this.synth.triggerAttack(note);
+	}
+
+	endNote() {
+		this.synth.triggerRelease();
 	}
 }
