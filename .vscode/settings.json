@@ -4,5 +4,8 @@
 	"[typescript]": {
 		"editor.insertSpaces": false,
 		"editor.tabSize": 4
-	}
+	},
+	"editor.quickSuggestions": { "other": false, "comments": false, "strings": false },
+	"editor.suggestOnTriggerCharacters": false,
+	"editor.wordBasedSuggestions": "off"
 }

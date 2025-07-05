@@ -32,6 +32,7 @@
     "rxjs": "~7.8.0",
     "tone": "^15.1.22",
     "tslib": "^2.3.0",
+    "wavesurfer.js": "^7.9.9",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
