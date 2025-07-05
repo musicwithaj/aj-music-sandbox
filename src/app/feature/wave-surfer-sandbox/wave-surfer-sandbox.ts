@@ -1,71 +1,98 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import WaveSurfer from 'wavesurfer.js';
+import { CommonModule } from '@angular/common';
 
 @Component({
 	selector: 'wave-surfer-sandbox',
-	imports: [FormsModule],
+	imports: [FormsModule, CommonModule],
 	templateUrl: './wave-surfer-sandbox.html',
 	styleUrl: './wave-surfer-sandbox.scss'
 })
-export class WaveSurferSandbox implements AfterViewInit {
-	private track1: WaveSurfer;
-	private track2: WaveSurfer;
+export class WaveSurferSandbox implements OnInit, AfterViewInit {
+	tracks: TrackConfig[] = [];
 	isPlaying: boolean = false;
-	track1Volume: number = 1;
+
+	ngOnInit(): void {
+		// Initialize tracks array
+		const track1Config = new TrackConfig('/audio/why_oh_why_full.mp3', 'violet', 0);
+		const track2Config = new TrackConfig('/audio/why_oh_why_full_old.mp3', 'orange', 1);
+		this.tracks.push(track1Config, track2Config);
+	}
 
 	ngAfterViewInit(): void {
-		this.track1 = WaveSurfer.create({
-			container: '#waveform1',
-			waveColor: 'violet',
-			progressColor: 'purple',
-			// Set a bar width
-			barWidth: 3,
-			// Optionally, specify the spacing between bars
-			barGap: 2,
-			// And the bar radius
-			barRadius: 4,
-		});
-
-		this.track1.load('/audio/why_oh_why_full.mp3');
-		// this.track2.load('assets/track2.mp3');
-
-		this.track1.on('click', () => {
-			this.track1.play();
-		})
+		this.tracks.forEach(track => track.loadTrack());
+		console.log(this.tracks);
 	}
 
 	ngOnDestroy(): void {
-		if (this.track1) {
-			this.track1.destroy();
-		}
-		if (this.track2) {
-			this.track2.destroy();
-		}
+		this.tracks.forEach(track => {
+			if (track.track) {
+				track.track.destroy();
+			}
+		});
+		this.tracks = [];
 	}
 
 	togglePlayPause() {
-		if (this.track1 && this.track1.isPlaying()) {
-			this.track1.pause();
+		if (this.isPlaying) {
+			this.tracks.forEach(track => {
+				if (track?.track) {
+					track.track.pause();
+				}
+			});
 			this.isPlaying = false;
 		} else {
-			this.track1.play();
+			this.tracks.forEach(track => {
+				if (track?.track) {
+					track.track.play();
+				}
+			});
 			this.isPlaying = true;
 		}
 	}
 
 	stopTrack() {
-		if (this.track1) {
-			this.track1.pause();
-			this.isPlaying = false;
-			this.track1.seekTo(0);
-		}
+		this.tracks.forEach(track => {
+			if (track?.track) {
+				track.track.stop();
+				track.track.seekTo(0);
+			}
+		});
+		this.isPlaying = false;
 	}
 
-	setVolume(volume: number) {
-		if (this.track1) {
-			this.track1Volume = volume;
-			this.track1.setVolume(volume);
+	setVolume(volume: number, index: number) {
+		const track = this.tracks[index];
+		if (track?.track) {
+			track.volume = volume;
+			track.track.setVolume(volume);
 		}
+	}
+}
+
+export class TrackConfig {
+	track: WaveSurfer;
+	volume: number = 1;
+	color: string;
+	index: number;
+	url: string;
+
+	constructor(url: string, color: string, index: number) {
+		this.url = url;
+		this.color = color;
+		this.index = index;
+	}
+
+	loadTrack() {
+		this.track = WaveSurfer.create({
+			container: `#waveform-${this.index}`,
+			waveColor: this.color,
+			progressColor: 'purple',
+			barWidth: 3,
+			barGap: 2,
+			barRadius: 4,
+		});
+		this.track.load(this.url);
 	}
 }
